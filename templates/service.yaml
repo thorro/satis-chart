@@ -8,12 +8,13 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
   - name: http
     protocol: TCP
     port: 80
     targetPort: 80
+    nodePort: 30110
   selector:
     app: {{ template "name" . }}
     release: {{ .Release.Name }}
